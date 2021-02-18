@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+</br>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -10,13 +11,14 @@
         </div>
         </br>
     </div>
+    </br>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
-
+    
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <th>Nº</th>
