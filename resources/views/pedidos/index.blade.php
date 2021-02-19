@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Cadastro de Clientes</h2>
+                <h2>Cadastro de Pedidos</h2>
             </div>
         </div>
     </div>
@@ -19,27 +19,23 @@
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <th>Nº</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Data de criação</th>
-            <th width="280px">Ação</th>
+            <th>Cliente</th>
+            <th>Status</th>
+            <th width="280px">Data de criação</th>
+            <th>Ação</th>
         </tr>
-        @foreach ($clientes as $cliente)
+        @foreach ($pedidos as $pedido)
             <tr>
-                <td>{{ $cliente->id }}</td>
-                <td>{{ $cliente->nome }}</td>
-                <td>{{ $cliente->cpf }}</td>
-                <td>{{ $cliente->telefone }}</td>
-                <td>{{ $cliente->endereco }}</td>
-                <td>{{ date_format($cliente->created_at, 'd-m-Y H:i:s') }}</td>
+                <td>{{ $pedido->id }}</td>
+                <td></td>
+                <td>{{ $pedido->status }}</td>
+                <td>{{ date_format($pedido->created_at, 'd-m-Y H:i:s') }}</td>
                 <td>
-                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
-                        <a href="{{ route('clientes.show', $cliente->id) }}" title="Visualizar">
+                    <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST">
+                        <a href="{{ route('pedidos.show', $pedido->id) }}" title="Visualizar">
                             <i class="fas fa-eye text-success fa-lg"></i>
                         </a>
-                        <a href="{{ route('clientes.edit', $cliente->id) }}" title="Editar">
+                        <a href="{{ route('pedidos.edit', $pedido->id) }}" title="Editar">
                             <i class="fas fa-edit fa-lg"></i>
                         </a>
                         @csrf
@@ -53,10 +49,10 @@
         @endforeach
     </table>
     <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('clientes.create') }}" title="Adicionar um Cliente"> <i class="fas fa-plus-circle"></i>
+                <a class="btn btn-success" href="{{ route('pedidos.create') }}" title="Adicionar um Pedido"> <i class="fas fa-plus-circle"></i>
                     </a>
             </div>
 
-    {!! $clientes->links() !!}
+    {!! $pedidos->links() !!}
 
 @endsection

@@ -134,7 +134,7 @@
                 <a id="nav-menu" class="nav-menu">☰ Menu</a>
                 <ul class="nav-list " id="nav">
                     <li> <a href="{{ route('clientes.index')}}" id="clientes"><i class="ion-ios7-people-outline"></i> Clientes</a></li> 
-                    <li> <a href="" id="pedidos"><i class="ion-bag"></i> Pedidos</a></li>
+                    <li> <a href="{{ route('pedidos.index')}}" id="pedidos"><i class="ion-bag"></i> Pedidos</a></li>
                     <li> <a href="{{ route('produtos.index')}}" id="produtos"><i class="icon ion-ios7-briefcase-outline"></i> Produtos</a></li> 
                 </ul>
         </nav>
