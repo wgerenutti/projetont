@@ -15,7 +15,7 @@ class Pedido extends Model
         'created_at'    
     ];
 
-    public function getCliente(){
+    public function getClientes(){
         return $this->hasMany(Cliete::class);
     }
 }
