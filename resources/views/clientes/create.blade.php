@@ -23,15 +23,15 @@
             <div class="form-group col-xs-12 col-sm-12 col-md-7">
                 <strong>Nome:</strong>
                 <input type="text" name="nome" class="form-control" placeholder="João da Silva Alberto">
-            </div>
+            </div></br>
             <div class="form-group col-xs-12 col-sm-12 col-md-7">
                 <strong>CPF:</strong>
                 <input type="text" name="cpf" class="form-control" placeholder="111.111.111-11">
-            </div>
+            </div></br>
             <div class="form-group col-xs-12 col-sm-12 col-md-7">
                 <strong>Telefone:</strong>
                 <input type="number" name="telefone" class="form-control" placeholder="(33)3333-3333">
-            </div>
+            </div></br>
             <div class="form-group col-xs-12 col-sm-12 col-md-7">
                 <strong>Endereço:</strong>
                 <input type="text" name="endereco" class="form-control" placeholder="Rua Das Flores n95 Jardim Maracanã - Londrina - PR">
