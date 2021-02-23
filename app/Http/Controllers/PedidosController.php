@@ -42,6 +42,7 @@ class PedidosController extends Controller
     {
         $request->validate([
             'status' => 'required',
+           
         ]);
 
         Pedido::create($request->all());

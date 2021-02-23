@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Cliente extends Model
 {
     protected $table = 'clientes';
@@ -16,4 +17,9 @@ class Cliente extends Model
         'endereco',
         'created_at'
     ];
+
+    public function Pedidos()
+    {
+        return $this->belongsTo(Pedido::class, 'clientes_id');
+    }
 }

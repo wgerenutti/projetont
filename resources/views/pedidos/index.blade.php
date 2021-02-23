@@ -27,7 +27,7 @@
                     @foreach ($pedidos as $pedido)
                     <tr>
                         <td scope="row">{{ $pedido->id }}</td>
-                        <td scope="row">{{ $pedido->getCliente()->getNome }}</td>
+                        <td scope="row"></td>
                         <td scope="row">{{ $pedido->status }}</td>
                         <td scope="row">{{ date_format($pedido->created_at, 'd-m-Y H:i:s') }}</td>
                         <td>

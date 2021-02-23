@@ -21,8 +21,9 @@
                 <div class="row h-100">
                     <div class="col">
                         <form action="{{ route('pedidos.store') }}" method="POST">
+                            @csrf
                             <div class="custom-select">
-                                <select style=width:400px name="cliente" class="form-control">
+                                <select style=width:400px name="clientes_id" class="form-control">
                                     <option selected>-- Selecione o Cliente --</option>
                                     @foreach($clientes as $cliente)
                                     <option value="{{ $cliente->id}}">{{ $cliente->nome}}</option>
