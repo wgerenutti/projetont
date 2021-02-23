@@ -8,7 +8,7 @@ use App\Models\Cliente;
 
 class PedidosController extends Controller
 {
-     /**
+    /**
      * mostrar conteudo no index
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +19,6 @@ class PedidosController extends Controller
 
         return view('pedidos.index', compact('pedidos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-
     }
 
     /**
@@ -29,7 +28,8 @@ class PedidosController extends Controller
      */
     public function create()
     {
-        return view('pedidos.create');
+        $clientes = Cliente::all();
+        return view('pedidos.create', compact('clientes'));
     }
 
     /**
@@ -41,10 +41,7 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required',
-            'descricao' => 'required',
-            'preco' => 'required',
-            'quantidade' => 'required'
+            'status' => 'required',
         ]);
 
         Pedido::create($request->all());

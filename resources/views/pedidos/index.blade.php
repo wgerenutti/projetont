@@ -26,10 +26,10 @@
                 <tbody>
                     @foreach ($pedidos as $pedido)
                     <tr>
-                        <td scope="row">>{{ $pedido->id }}</td>
-                        <td scope="row">></td>
-                        <td scope="row">>{{ $pedido->status }}</td>
-                        <td scope="row">>{{ date_format($pedido->created_at, 'd-m-Y H:i:s') }}</td>
+                        <td scope="row">{{ $pedido->id }}</td>
+                        <td scope="row">{{ $pedido->getCliente()->getNome }}</td>
+                        <td scope="row">{{ $pedido->status }}</td>
+                        <td scope="row">{{ date_format($pedido->created_at, 'd-m-Y H:i:s') }}</td>
                         <td>
                             <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST">
                                 <a href="{{ route('pedidos.show', $pedido->id) }}" title="Visualizar">
