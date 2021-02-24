@@ -18,6 +18,6 @@ class Pedido extends Model
 
     public function clientes()
     {
-        return $this->hasMany(Cliente::class, 'clientes_id', 'id');
+        return $this->hasMany(Cliente::class, 'id','clientes_id');
     }
 }

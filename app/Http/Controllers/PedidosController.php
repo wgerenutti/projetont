@@ -15,8 +15,7 @@ class PedidosController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::orderBy('id','asc')->paginate(10);
-
+        $pedidos = Pedido::orderBy('id', 'asc')->paginate(10);
         return view('pedidos.index', compact('pedidos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
