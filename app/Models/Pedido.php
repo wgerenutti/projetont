@@ -12,10 +12,11 @@ class Pedido extends Model
 
     protected $fillable = [
         'status',
+        'clientes_id',
         'created_at'
     ];
 
-    public function Clientes()
+    public function clientes()
     {
         return $this->hasMany(Cliente::class, 'clientes_id', 'id');
     }

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container content">
     <div class="row">
@@ -6,7 +7,7 @@
             <div class="pull-left">
                 <p class="text-center fs-1">Cadastrar novo Pedido</p>
                 <div class="float-left">
-                    <a class="btn btn-primary" href="{{ route('clientes.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
+                    <a class="btn btn-primary" href="{{ route('pedidos.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
                 </div></br>
                 @if ($errors->any())
                 <div class="alert alert-danger">

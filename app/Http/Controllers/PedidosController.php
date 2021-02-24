@@ -15,7 +15,7 @@ class PedidosController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::latest()->paginate(5);
+        $pedidos = Pedido::orderBy('id','asc')->paginate(10);
 
         return view('pedidos.index', compact('pedidos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -42,7 +42,7 @@ class PedidosController extends Controller
     {
         $request->validate([
             'status' => 'required',
-           
+            'clientes_id' => 'required'
         ]);
 
         Pedido::create($request->all());

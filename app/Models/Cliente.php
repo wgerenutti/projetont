@@ -17,9 +17,4 @@ class Cliente extends Model
         'endereco',
         'created_at'
     ];
-
-    public function Pedidos()
-    {
-        return $this->belongsTo(Pedido::class, 'clientes_id');
-    }
 }
