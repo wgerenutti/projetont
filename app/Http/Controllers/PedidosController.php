@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Cliente;
+use App\Models\Produto;
 
 class PedidosController extends Controller
 {
@@ -28,7 +29,8 @@ class PedidosController extends Controller
     public function create()
     {
         $clientes = Cliente::all();
-        return view('pedidos.create', compact('clientes'));
+        $produtos = Produto::all();
+        return view('pedidos.create', compact('clientes', 'produtos'));
     }
 
     /**
@@ -69,7 +71,8 @@ class PedidosController extends Controller
      */
     public function edit(Pedido $pedido)
     {
-        return view('pedidos.edit', compact('pedido'));
+        $clientes = Cliente::all();
+        return view('pedidos.edit', compact('pedido', 'clientes'));
     }
     /**
      * Atualiza um pedido no BD
@@ -82,6 +85,7 @@ class PedidosController extends Controller
     {
         $request->validate([
             'status' => 'required',
+            'clientes_id' => 'required',
         ]);
         $pedido->update($request->all());
 

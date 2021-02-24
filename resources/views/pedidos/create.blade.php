@@ -6,6 +6,7 @@
         <div class="col-md ">
             <div class="pull-left">
                 <p class="text-center fs-1">Cadastrar novo Pedido</p>
+                {{ $produtos}}
                 <div class="float-left">
                     <a class="btn btn-primary" href="{{ route('pedidos.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
                 </div></br>
@@ -30,8 +31,8 @@
                                     <option value="{{ $cliente->id}}">{{ $cliente->nome}}</option>
                                     @endforeach
                                 </select>
-                            </div></br>
-
+                            </div>
+                            </br>
                             <div class="custom-select">
                                 <select style=width:400px name="status" class="form-control">
                                     <option selected>-- Selecione o Status --</option>

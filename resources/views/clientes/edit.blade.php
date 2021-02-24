@@ -7,8 +7,8 @@
             <p class="text-center fs-1">Editar o cliente <b>"{{$cliente->nome}}"</b></p>
             <div class="float-left">
                 <a class="btn btn-primary" href="{{ route('clientes.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
-            </div></br>
-
+            </div>
+            </br>
             @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Ops!</strong> Há um problema com seu Cliente<br><br>

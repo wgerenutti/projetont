@@ -1,67 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-    
+<div class="container content">
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('clientes.index') }}" title="Voltar"> <i
-                        class="fas fa-backward "></i> </a>
+        <div class="col-md ">
+            <p class="text-center fs-1">Editar o pedido nº{{$pedido->id}}</b></p>
+            <div class="float-left">
+                <a class="btn btn-primary" href="{{ route('pedidos.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
             </div>
-        </div>
-        <div class="pull-left">
-        </br>
-                <h2>Editar o cliente <b>"{{$cliente->nome}}"</b></h2>
-         </div>
-    </div>
-    </br>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Ops!</strong> Há um problema com seu Cliente<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
+            </br>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Ops!</strong> Há um problema com seu Pedido<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            <form action="{{ route('pedidos.update', $pedido->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="custom-select">
+                            <select style=width:400px name="status" class="form-control">
+                                <option selected> {{ $pedido->status }}</option>
+                                <option value=aberto>Em aberto</option>
+                                <option value=pago>Pago</option>
+                                <option value=cancelado>Cancelado</option>
+                            </select>
+                        </div>
+                        </br>
+                        <select style=width:400px name="clientes_id" class="form-control">
+                            @foreach ($pedido->clientes as $cliente)
+                            <option selected value="{{ $cliente->id}}">{{ $cliente->nome}}</option>
+                            @endforeach
+                            @foreach($clientes as $cliente)
+                            <option value="{{ $cliente->id}}">{{ $cliente->nome}}</option>
+                            @endforeach
+                        </select>
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+            </form>
         </div>
-    @endif
-
-    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nome:</strong>
-                    <input type="text" name="nome" value="{{ $cliente->nome }}" class="form-control" placeholder="Nome">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>CPF:</strong>
-                    <input type="number" name="cpf" class="form-control" placeholder="{{ $cliente->cpf }}"
-                        value="{{  $cliente->cpf }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Telefone:</strong>
-                    <input type="number" name="telefone" class="form-control" placeholder="{{ $cliente->telefone }}"
-                        value="{{  $cliente->telefone }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Endereço:</strong>
-                    <input type="text" name="endereco" class="form-control" placeholder="{{ $cliente->endereco }}"
-                        value="{{ $cliente->endereco }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </div>
-
-    </form>
+    </div>
+</div>
 @endsection

@@ -10,13 +10,14 @@
                 <div class="pull-left">
                     <h2> Exibindo o pedido nº: {{ $pedido->id }}</h2>
                 </div>
+                </br>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('pedidos.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
                 </div>
             </div>
+            </br>
         </div>
         </br>
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

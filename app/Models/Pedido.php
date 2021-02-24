@@ -18,6 +18,10 @@ class Pedido extends Model
 
     public function clientes()
     {
-        return $this->hasMany(Cliente::class, 'id','clientes_id');
+        return $this->hasMany(Cliente::class, 'id', 'clientes_id');
+    }
+    public function produtos()
+    {
+        return $this->belongsToMany(Produto::class, 'pedidos_produtos');
     }
 }

@@ -23,4 +23,8 @@ class Produto extends Model
         'quantidade',
         'created_at'
     ];
+    public function pedidos()
+    {
+        return $this->belongsToMany(Pedido::class, 'pedidos_produtos');
+    }
 }
