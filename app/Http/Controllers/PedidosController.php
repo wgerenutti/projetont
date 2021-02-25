@@ -45,9 +45,19 @@ class PedidosController extends Controller
             'status' => 'required',
             'clientes_id' => 'required',
             'produtos_id' => 'required',
+            //'pedidos_id' => 'required'
         ]);
 
-        Pedido::create($request->all());
+        $pedido = Pedido::create($request->only([
+            'pedidos_id',
+            'produtos_id',
+            'clientes_id'
+        ]));
+
+        $cliente = Cliente::find($request->clientes_id);
+        $pedido->clientes()->save($cliente);
+        $produto = Produto::find($request->produtos_id);
+        $pedido->produtos()->save($produto);
 
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido cadastrado com sucesso');

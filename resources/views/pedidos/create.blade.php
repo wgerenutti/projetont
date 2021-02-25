@@ -42,7 +42,7 @@
                             </div>
                             </br>
                             <label for="selectBox"> Escolha um produto </label>
-                            <select class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
+                            <select style=width:400px class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
                                 @foreach ($produtos as $produto)
                                 <option value="{{ $produto->id}}">{{ $produto->nome}}</option>
                                 @endforeach
@@ -51,7 +51,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Id Produto</th>
+                                        <th>Código Produto</th>
                                         <th>Produto selecionado</th>
                                         <th>Remover</th>
                                     </tr>
