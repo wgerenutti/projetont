@@ -13,7 +13,7 @@
                 <p>{{ $message }}</p>
             </div>
             @endif
-            <table class="table table-hover">
+            <table class="table table-hover" id="tabela">
                 <thead>
                     <tr>
                         <th scope="col">Nº</th>
@@ -32,7 +32,7 @@
                         @endforeach
                         <td scope="row">{{ $pedido->status }}</td>
                         <td scope="row">{{ date_format($pedido->created_at, 'd-m-Y H:i:s') }}</td>
-                        <td>
+                        <td  scope="row" width="100px">
                             <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST">
                                 <a href="{{ route('pedidos.show', $pedido->id) }}" title="Visualizar">
                                     <i class="fas fa-eye text-success fa-lg"></i>
@@ -58,7 +58,34 @@
         </div>
     </div>
 </div>
-
 {!! $pedidos->links() !!}
-
+<script>
+    $(document).ready(function() {
+        $('#tabela').DataTable({
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
+    });
+</script>
 @endsection

@@ -13,16 +13,16 @@
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-                <table id="tabela" class="table">
+                <table id="tabela" class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Nº</th>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Telefone</th>
-                            <th>Endereço</th>
-                            <th>Data de criação</th>
-                            <th>Ação</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Data de criação</th>
+                            <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@
                             <td scope="row">{{ $cliente->telefone }}</td>
                             <td scope="row">{{ $cliente->endereco }}</td>
                             <td scope="row">{{ date_format($cliente->created_at, 'd-m-Y H:i:s') }}</td>
-                            <td scope="row">
+                            <td scope="row" width="100px">
                                 <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
                                     <a href="{{ route('clientes.show', $cliente->id) }}" title="Visualizar">
                                         <i class="fas fa-eye text-success fa-lg"></i>
@@ -64,7 +64,31 @@
 {!! $clientes->links() !!}
 <script>
     $(document).ready(function() {
-        $('#tabela').DataTable();
+        $('#tabela').DataTable({
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
     });
 </script>
 @endsection

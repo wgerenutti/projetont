@@ -12,7 +12,7 @@
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-                <table class="table table-hover">
+                <table id="tabela" class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Nº</th>

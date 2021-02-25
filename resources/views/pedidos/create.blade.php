@@ -44,7 +44,7 @@
                             <label for="selectBox"> Escolha um produto </label>
                             <select class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
                                 @foreach ($produtos as $produto)
-                                <option value="{{ $produto->id}}" id="produtoId">{{ $produto->nome}}</option>
+                                <option value="{{ $produto->id}}">{{ $produto->nome}}</option>
                                 @endforeach
                             </select>
                             </br></br>
@@ -70,12 +70,11 @@
         </div>
     </div>
 </div>
-
 <script>
     var table = document.getElementById('tbody');
 
     function addProduct(product) {
-        table.innerHTML += "<tr><td>" + product.selectedIndex + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remove' onclick='removeProduct()'/></tr>";
+        table.innerHTML += "<tr><td>" + product[product.selectedIndex].value + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remove' onclick='removeProduct()'/></tr></td>";
     }
 
     function removeProduct() {
