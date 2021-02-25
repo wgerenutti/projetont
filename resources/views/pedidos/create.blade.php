@@ -6,7 +6,6 @@
         <div class="col-md ">
             <div class="pull-left">
                 <p class="text-center fs-1">Cadastrar novo Pedido</p>
-                {{ $produtos}}
                 <div class="float-left">
                     <a class="btn btn-primary" href="{{ route('pedidos.index') }}" title="Voltar"> <i class="fas fa-backward "></i> </a>
                 </div></br>
@@ -42,6 +41,26 @@
                                 </select>
                             </div>
                             </br>
+                            <label for="selectBox"> -- Escolha um produto --</label>
+                            <select class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
+                                <option selected>-- Escolha um produto --</option>
+                                @foreach ($produtos as $produto)
+                                <option value="{{ $produto->id}}" id="produtoId">{{ $produto->nome}}</option>
+                                @endforeach
+                            </select>
+                            </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id Produto</th>
+                                        <th>Produto selecionado</th>
+                                        <th>Remover</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                </tbody>
+                            </table>
+                            </br>
                             <div class="col-xs-12 col-sm-12 col-md-7 text-center">
                                 <button type="submit" class="btn btn-primary">Enviar</button>
                             </div>
@@ -52,4 +71,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    var table = document.getElementById('tbody');
+
+    function addProduct(product) {
+        table.innerHTML += "<tr><td>" + product.selectedIndex + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remove' onclick='removeProduct()'/></tr>";
+    }
+
+    function removeProduct() {
+        var td = event.target.parentNode;
+        var tr = td.parentNode;
+        tr.parentNode.removeChild(tr);
+    }
+</script>
 @endsection

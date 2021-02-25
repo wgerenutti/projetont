@@ -43,7 +43,8 @@ class PedidosController extends Controller
     {
         $request->validate([
             'status' => 'required',
-            'clientes_id' => 'required'
+            'clientes_id' => 'required',
+            'produtos_id' => 'required',
         ]);
 
         Pedido::create($request->all());
@@ -86,6 +87,7 @@ class PedidosController extends Controller
         $request->validate([
             'status' => 'required',
             'clientes_id' => 'required',
+            'produtos_id' => 'required',
         ]);
         $pedido->update($request->all());
 
