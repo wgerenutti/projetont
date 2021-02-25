@@ -41,9 +41,8 @@
                                 </select>
                             </div>
                             </br>
-                            <label for="selectBox"> -- Escolha um produto --</label>
+                            <label for="selectBox"> Escolha um produto </label>
                             <select class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
-                                <option selected>-- Escolha um produto --</option>
                                 @foreach ($produtos as $produto)
                                 <option value="{{ $produto->id}}" id="produtoId">{{ $produto->nome}}</option>
                                 @endforeach

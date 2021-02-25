@@ -13,7 +13,7 @@
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-                <table class="table table-hover">
+                <table id="tabelaClientes" class="table">
                     <thead>
                         <tr>
                             <th scope="col">Nº</th>
@@ -22,7 +22,7 @@
                             <th>Telefone</th>
                             <th>Endereço</th>
                             <th>Data de criação</th>
-                            <th width="280px">Ação</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,9 +57,15 @@
                     <a class="btn btn-success" href="{{ route('clientes.create') }}" title="Adicionar um Cliente"> <i class="fas fa-plus-circle"></i>
                     </a>
                 </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#tabelaClientes').DataTable();
+                    });
+                </script>
             </div>
         </div>
     </div>
 </div>
 {!! $clientes->links() !!}
+</script>
 @endsection
