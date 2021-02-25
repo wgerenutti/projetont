@@ -13,7 +13,7 @@
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-                <table id="tabelaClientes" class="table">
+                <table id="tabela" class="table">
                     <thead>
                         <tr>
                             <th scope="col">Nº</th>
@@ -57,15 +57,14 @@
                     <a class="btn btn-success" href="{{ route('clientes.create') }}" title="Adicionar um Cliente"> <i class="fas fa-plus-circle"></i>
                     </a>
                 </div>
-                <script>
-                    $(document).ready(function() {
-                        $('#tabelaClientes').DataTable();
-                    });
-                </script>
             </div>
         </div>
     </div>
 </div>
 {!! $clientes->links() !!}
+<script>
+    $(document).ready(function() {
+        $('#tabela').DataTable();
+    });
 </script>
 @endsection
