@@ -1,0 +1,28 @@
+.navbar .navbar-nav .nav-link>.fa {
+    display: block;
+    text-align: center;
+    padding: 30px;
+    transition: 0.5s;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.nav-item a {
+    background-color: #00a8af;
+
+}
+
+.navbar .navbar-nav .nav-link .fa:hover {
+    margin-bottom: -15px;
+}
+
+.content {
+    height: 100vh;
+}
+
+.footer {
+    text-align: center;
+    background-color: teal;
+}

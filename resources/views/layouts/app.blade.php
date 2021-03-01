@@ -50,7 +50,7 @@
 
 </head>
 @section('style')
-<link href="/css/app.css" rel="stylesheet">
+
 @show
 
 <body>

@@ -42,7 +42,7 @@
                             </div>
                             </br>
                             <label for="selectBox"> Escolha um produto </label>
-                            <select style=width:400px class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
+                            <select style=width:400px class="form-control" name="produtos" id="selectBox" onchange="addProduct(options);">
                                 @foreach ($produtos as $produto)
                                 <option value="{{ $produto->id}}">{{ $produto->nome}}</option>
                                 @endforeach
@@ -72,9 +72,10 @@
 </div>
 <script>
     var table = document.getElementById('tbody');
+    var count = 5;
 
     function addProduct(product) {
-        table.innerHTML += "<tr><td>" + product[product.selectedIndex].value + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remove' onclick='removeProduct()'/></tr></td>";
+        table.innerHTML += "<tr name='produtos_id["+count+"]' value=" + product[product.selectedIndex].value + "><td>" + product[product.selectedIndex].value + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remove' onclick='removeProduct()'/></tr></td>";
     }
 
     function removeProduct() {

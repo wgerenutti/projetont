@@ -15,7 +15,7 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->enum('status',['aberto', 'pago', 'cancelado',]);
+            $table->enum('status', ['Em aberto', 'Pago', 'Cancelado',]);
             $table->bigInteger('clientes_id')->unsigned();
             $table->foreign('clientes_id')->references('id')->on('clientes')->onCascade('delete');
             $table->timestamps();
