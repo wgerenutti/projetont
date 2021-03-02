@@ -101,7 +101,7 @@ class PedidosController extends Controller
         ]);
 
         $produto = Produto::find($request->produtos_id);
-        $pedido->produtos()->attach([$produto]);
+        $pedido->produtos()->attach($produto->id);
         $pedido->update($request->all());
 
         return redirect()->route('pedidos.index')

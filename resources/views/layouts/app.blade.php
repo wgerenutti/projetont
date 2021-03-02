@@ -42,6 +42,10 @@
             height: 100vh;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .footer {
             text-align: center;
             background-color: teal;
