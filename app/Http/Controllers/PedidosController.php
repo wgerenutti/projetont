@@ -57,7 +57,7 @@ class PedidosController extends Controller
         $cliente = Cliente::find($request->clientes_id);
         $pedido->clientes()->save($cliente);
         $produto = Produto::find($request->produtos_id);
-        $pedido->produtos()->save($produto);
+        $pedido->produtos()->attach($produto);
 
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido cadastrado com sucesso');

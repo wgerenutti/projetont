@@ -42,7 +42,7 @@
                             </div>
                             </br>
                             <label for="selectBox"> Escolha um produto </label>
-                            <select style=width:400px class="form-control" name="produtos_id" id="selectBox" onchange="addProduct(options);">
+                            <select style=width:400px class="form-control" name="produtos" id="selectBox" onfocus="this.selectedIndex = -1;" onchange="addProduct(options);">
                                 @foreach ($produtos as $produto)
                                 <option value="{{ $produto->id}}">{{ $produto->nome}}</option>
                                 @endforeach
@@ -75,13 +75,15 @@
     var count = 0;
 
     function addProduct(product) {
-        table.innerHTML += "<tr><td><input type='hidden' name='produtos_id[" + count + "]'>" + product[product.selectedIndex].value + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remove' onclick='removeProduct()'/></tr></td>";
+        table.innerHTML += "<tr><td><input type='hidden' name='produtos_id[" + count + "]' value='" + product[product.selectedIndex].value + "'>" + product[product.selectedIndex].value + "</td><td>" + product[product.selectedIndex].innerText + "</td><td><input type='button' value='Remover' onclick='removeProduct()'/></tr></td>";
+        count++;
     }
 
     function removeProduct() {
         var td = event.target.parentNode;
         var tr = td.parentNode;
         tr.parentNode.removeChild(tr);
+        count--;
     }
 </script>
 @endsection
