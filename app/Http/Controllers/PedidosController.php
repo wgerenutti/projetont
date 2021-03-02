@@ -16,9 +16,8 @@ class PedidosController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::orderBy('id', 'asc')->paginate(10);
-        return view('pedidos.index', compact('pedidos'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $pedidos = Pedido::orderBy('id', 'asc')->paginate(2000);
+        return view('pedidos.index', compact('pedidos'));
     }
 
     /**
@@ -57,7 +56,7 @@ class PedidosController extends Controller
         $cliente = Cliente::find($request->clientes_id);
         $pedido->clientes()->save($cliente);
         $produto = Produto::find($request->produtos_id);
-        $pedido->produtos()->attach($produto);
+        $pedido->produtos()->sync($produto);
 
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido cadastrado com sucesso');

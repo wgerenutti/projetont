@@ -7,17 +7,16 @@ use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
-  /**
+    /**
      * mostrar conteudo no index
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $clientes = Cliente::latest()->paginate(5);
+        $clientes = Cliente::latest()->paginate(2000);
 
-        return view('clientes.index', compact('clientes'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('clientes.index', compact('clientes'));
     }
 
     /**
@@ -106,5 +105,3 @@ class ClienteController extends Controller
             ->with('success', 'Cliente deletado com sucesso');
     }
 }
-
-

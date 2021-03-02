@@ -13,7 +13,7 @@
                 <p>{{ $message }}</p>
             </div>
             @endif
-            <table class="table table-hover" id="tabela">
+            <table class="table" id="tabela">
                 <thead>
                     <tr>
                         <th scope="col">Nº</th>
@@ -32,7 +32,7 @@
                         @endforeach
                         <td scope="row">{{ $pedido->status }}</td>
                         <td scope="row">{{ date_format($pedido->created_at, 'd-m-Y H:i:s') }}</td>
-                        <td  scope="row" width="100px">
+                        <td scope="row" width="100px">
                             <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST">
                                 <a href="{{ route('pedidos.show', $pedido->id) }}" title="Visualizar">
                                     <i class="fas fa-eye text-success fa-lg"></i>

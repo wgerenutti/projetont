@@ -7,17 +7,16 @@ use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
-     /**
+    /**
      * mostrar conteudo no index
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $produtos = Produto::latest()->paginate(5);
+        $produtos = Produto::latest()->paginate(2000);
 
-        return view('produtos.index', compact('produtos'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('produtos.index', compact('produtos'));
     }
 
     /**
