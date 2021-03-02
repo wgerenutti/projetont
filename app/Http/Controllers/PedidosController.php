@@ -82,7 +82,8 @@ class PedidosController extends Controller
     public function edit(Pedido $pedido)
     {
         $clientes = Cliente::all();
-        return view('pedidos.edit', compact('pedido', 'clientes'));
+        $produtos = Produto::all();
+        return view('pedidos.edit', compact('pedido', 'clientes', 'produtos'));
     }
     /**
      * Atualiza um pedido no BD
@@ -98,6 +99,9 @@ class PedidosController extends Controller
             'clientes_id' => 'required',
             'produtos_id' => 'required',
         ]);
+
+        $produto = Produto::find($request->produtos_id);
+        $pedido->produtos()->attach([$produto]);
         $pedido->update($request->all());
 
         return redirect()->route('pedidos.index')
