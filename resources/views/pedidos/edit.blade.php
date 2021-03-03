@@ -63,10 +63,10 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tbody">
-                                        @foreach ($produtos as $key => $produto)
+                                        @foreach ($pedido->produtos as $produto)
                                         <tr>
                                             <td>
-                                                <input type="hidden" name="produtos_id[{{$key}}]" value="{{ $produto->id}}">{{ $produto->id}}
+                                                <input type="hidden" name="produtos_id[]" value="{{ $produto->id}}">{{ $produto->id}}
                                             </td>
                                             <td>
                                                 {{ $produto->nome}}

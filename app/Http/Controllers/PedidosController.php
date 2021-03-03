@@ -79,10 +79,11 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pedido $pedido)
+    public function edit(Pedido $pedido, Request $request)
     {
         $clientes = Cliente::all();
-        $produtos = Produto::all();
+        $produtos = Produto::All();
+
         return view('pedidos.edit', compact('pedido', 'clientes', 'produtos'));
     }
     /**
@@ -101,7 +102,11 @@ class PedidosController extends Controller
         ]);
 
         $produto = Produto::find($request->produtos_id);
-        $pedido->produtos()->attach($produto->id);
+        $produtoId = [];
+        foreach ($produto as $pdt) {
+            $produtoId[] = $pdt->id;
+        }
+        $pedido->produtos()->sync($produtoId);
         $pedido->update($request->all());
 
         return redirect()->route('pedidos.index')

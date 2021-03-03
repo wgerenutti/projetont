@@ -24,8 +24,8 @@
                         <form action="{{ route('pedidos.store') }}" method="POST">
                             @csrf
                             <div class="custom-select">
-                                <select style=width:400px name="clientes_id" class="form-control">
-                                    <option selected>-- Selecione o Cliente --</option>
+                                <label for="selectBox"> Selecione um cliente </label>
+                                <select style=width:400px name="clientes_id" class="form-control" onfocus="this.selectedIndex = -1;">
                                     @foreach($clientes as $cliente)
                                     <option value="{{ $cliente->id}}">{{ $cliente->nome}}</option>
                                     @endforeach
@@ -33,8 +33,8 @@
                             </div>
                             </br>
                             <div class="custom-select">
-                                <select style=width:400px name="status" class="form-control">
-                                    <option selected>-- Selecione o Status --</option>
+                                <label for="selectBox"> Selecione um status </label>
+                                <select style=width:400px name="status" class="form-control" onfocus="this.selectedIndex = -1;">
                                     <option value=aberto>Em aberto</option>
                                     <option value=pago>Pago</option>
                                     <option value=cancelado>Cancelado</option>
